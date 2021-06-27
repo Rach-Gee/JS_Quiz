@@ -72,6 +72,7 @@ var questions = [
 // Attach event listener to start button to call startGame function on click
 startButton.addEventListener('click', startGame)
 
+//start game function randomises the questions variable, hides elements and adds elements. Also calls start timer and next question functions
 function startGame() {
     startButton.classList.add("hide")
     highscoreElement.classList.add("hide")
@@ -91,6 +92,7 @@ function setNextQuestion() {
     showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
+//show question function renders questions and answers to the page as well as counts correct questions
 function showQuestion(question) {
     questionElement.innerText = question.question
     question.answers.forEach(answer => {
@@ -111,7 +113,7 @@ function resetState() {
     }
 }
 
-
+//select answer function targets the users answer and adds to the correct counter as well as takes 5 seconds if incorrect answer is seleted 
 function selectAnswer(e) {
     var selectedButton = e.target
     var correct = selectedButton.dataset.correct
@@ -134,25 +136,24 @@ function selectAnswer(e) {
     }
 }
 
+//End Game function calls submit high score and stops timer
 function EndGame() {
     submitHighScore()
     questionContainerElement.classList.add("hide")
     clearInterval(timer);
 }
 
+//submit high score function hides and shows elements
 function submitHighScore() {
     formElement.classList.remove("hide")
     timerElement.classList.add("hide")
     secondElement.classList.add("hide")
 }
 
+// Attach event listener to highScore button
 submitButtonElement.addEventListener('click', highScore)
-/*
-var saveHighScore = {
-    nameInput: nameImput.value.trim(),
-    correctCounter: correctCounter.value
-};*/
 
+//high score function saves user input and renders to the page
 function highScore(event) {
     // Prevent default action
     event.preventDefault();
@@ -170,7 +171,7 @@ function highScore(event) {
     playerScore.textContent = JSON.parse(localStorage.getItem("highScoreList"));
 }
 
-// The setTimer function starts and stops the timer and triggers winGame() and loseGame()
+// The setTimer function starts and stops the timer 
 function startTimer() {
     // Sets timer
     timerCount = 30;
@@ -185,6 +186,7 @@ function startTimer() {
     }, 1000);
 }
 
+// The high score page function hides and shows elements as well as rendering the high score board 
 function highScorePage() {
     EndGame()
     playerScore.textContent = JSON.parse(localStorage.getItem("highScoreList"));
@@ -196,37 +198,14 @@ function highScorePage() {
     resetButtonElement.classList.remove("hide")
 }
 
-
-
+// Attach event listener to high Score button
 highScorebtnEl.addEventListener("click", highScorePage)
 
-
-function resetGame() {
+// The reset game page function clears the high score button
+function resetHighScore() {
     window.localStorage.clear();
     playerScore.textContent = JSON.parse(localStorage.getItem("highScoreList"));
 }
 
 // Attaches event listener to button
-resetButtonElement.addEventListener("click", resetGame);
-
-
-
-/*
-localStorage.setItem("studentGrade", JSON.stringify(studentGrade));
-renderMessage();
-
-});
-
-function renderMessage() {
-  var lastGrade = JSON.parse(localStorage.getItem("studentGrade"));
-  if (lastGrade !== null) {
-    document.querySelector(".message").textContent = lastGrade.student +
-    " received a/an " + lastGrade.grade
-  }
-}
-*/
-
-
-
-
-
+resetButtonElement.addEventListener("click", resetHighScore);
