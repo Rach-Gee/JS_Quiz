@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>JavaScript Quiz</title>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <h1>Battle of the Wits</h1>
+            <div id="question-container" class="hide">
+                <div id="question"> Question</div>
+                <div id="answer-Buttons" class="btn-grid">
+                    <button class="btn"> Answer 1</button>
+                    <button class="btn"> Answer 2</button>
+                    <button class="btn"> Answer 3</button>
+                    <button class="btn"> Answer 4</button>
+                </div>
+            </div>
+            <div class="controls">
+                <!-- Button to start the Game -->
+                <button id="start-btn" class="btn start-btn">Start</button>
+            </div>
+            <form id="form-container" class="hide">
+                <h1>Submit High Scores</h1>
+                <p>
+                    <label for="username">Name:</label>
+                    <input id="username" type="text" placeholder="First Last" />
+                </p>
+                <p>
+                    <button id="submit-btn">Submit</button>
+                </p>
+            </form>
+            <div id="high-score-card" class="hide">
+                <h2>High Score</h2>
+                <p><strong>High Score:</strong> <span id="response"></span></p>
+            </div>
+        </div>
+        </div>
+        <div class="timer-container">
+            <div class="timer-text">
+                <div class="large-font timer-count">30</div>
+                <h3 id="seconds">seconds remaining</h3>
+                <button id='highScorebtn' class='btn'> High Scores</button>
+                <button id='resetBtn' class='btn hide'> Reset High Scores</button>
+            </div>
+
+        </div>
+    </main>
+    <script src="./assets/script.js"></script>
+</body>
+
+</html>
